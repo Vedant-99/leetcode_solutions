@@ -7,9 +7,7 @@ class Solution {
             this.val = val;
         }
         public int compareTo(Pair p){
-            if (this.dist != p.dist) 
-            return Integer.compare(this.dist, p.dist); 
-
+            if(this.dist != p.dist) return Integer.compare(this.dist,p.dist);
             return Integer.compare(this.val ,p.val);
         }
     }
