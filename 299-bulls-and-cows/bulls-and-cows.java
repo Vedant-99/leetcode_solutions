@@ -1,20 +1,21 @@
 class Solution {
     public String getHint(String secret, String guess) {
-        int bulls = 0;
-        int cows = 0;
-        int[] secretCount = new int[10];
-        int[] guessCount = new int[10];
+        int cows =0;
+        int bulls =0;
+        int[] count = new int[10];
+        
         for(int i=0;i<secret.length();i++){
-            char s = secret.charAt(i);
-            char t = guess.charAt(i);
+
+            int s = secret.charAt(i)-'0';
+            int t = guess.charAt(i)-'0';
+
             if(s==t) bulls++;
             else{
-                secretCount[s-'0']++;
-                guessCount[t-'0']++;
+                if(count[s]<0) cows++;
+                if(count[t]>0) cows++;
+                count[s]++;
+                count[t]--;
             }
-        }
-        for(int i=0;i<secretCount.length;i++){
-            cows+=Math.min(secretCount[i],guessCount[i]);
         }
         return bulls+"A"+cows+"B";
     }
