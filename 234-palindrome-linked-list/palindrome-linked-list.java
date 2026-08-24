@@ -18,9 +18,8 @@ class Solution {
       }
       int i=0,j=arr.size()-1;
       while(i<=j){
-        if(!arr.get(i).equals(arr.get(j))) return false;
-        i++;
-        j--;
+        if(!arr.get(i++).equals(arr.get(j--))) return false;
+        
       }
       return true;
     }
