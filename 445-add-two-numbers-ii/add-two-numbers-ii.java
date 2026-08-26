@@ -9,43 +9,45 @@
  * }
  */
 class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        l1 = reverse(l1);
+        l2 = reverse(l2);
+        ListNode temp1 = l1;
+        ListNode temp2 = l2;
+
+        ListNode newList = new ListNode(-1);
+        ListNode temp = newList;
+        int carry =0;
+
+        while(temp1!=null || temp2!=null){
+            int sum = carry;
+            if(temp1!=null){
+                sum+=temp1.val;
+                temp1= temp1.next;
+            }
+            if(temp2!=null){
+                sum+=temp2.val;
+                temp2 = temp2.next;
+            }
+            carry = sum/10;
+            temp.next = new ListNode(sum%10);
+            temp = temp.next;
+        }
+        if(carry!=0) temp.next= new ListNode(carry);
+        return reverse(newList.next);
+
+
+    }
     public ListNode reverse(ListNode head){
-        ListNode curr =head;
-        ListNode forw= null,prev=null;
-        while(curr !=null){
-            forw=curr.next;
+        ListNode curr = head;
+        ListNode prev = null;
+        ListNode forw = null;
+        while(curr!=null){
+            forw = curr.next;
             curr.next=prev;
-            prev=curr;
-            curr=forw;
+            prev = curr;
+            curr = forw;
         }
         return prev;
     }
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        l1=reverse(l1);
-        ListNode t1=l1;
-        l2= reverse(l2);
-        ListNode t2=l2;
-        int carry=0;
-        ListNode dummy = new ListNode(-1);
-        ListNode tail = dummy;
-        while(t1!=null || t2!=null){
-            int sum=carry;
-            if(t1!=null){
-                sum +=t1.val;
-                t1= t1.next;
-            }
-            if(t2!=null){
-                sum +=t2.val;
-                t2= t2.next;
-            }
-            carry=sum/10;
-            tail.next = new ListNode(sum%10);
-            tail=tail.next;
-            }
-            if(carry != 0) tail.next = new ListNode(carry);
-            return reverse(dummy.next);
-
-        }
-
-
-    }
+}
