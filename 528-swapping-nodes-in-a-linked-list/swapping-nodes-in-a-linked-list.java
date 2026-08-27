@@ -16,19 +16,14 @@ class Solution {
             list.add(t);
             t = t.next;
         }
-        swap(list,k-1,list.size()-k);
-        
-        ListNode dummy = new ListNode(-1);
-        ListNode temp = dummy;
-        for(int i=0;i<list.size();i++){
-            temp.next=list.get(i);
-            temp  = temp.next;
-        }
-        return dummy.next; 
-    }
-    public void swap(ArrayList<ListNode> ans,int i,int j){
-        int temp = ans.get(i).val;
-        ans.get(i).val = ans.get(j).val;
-        ans.get(j).val= temp;
+        int n = list.size();
+        ListNode first = list.get(k-1);
+        ListNode second = list.get(n-k);
+
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+
+        return head;
     }
 }
