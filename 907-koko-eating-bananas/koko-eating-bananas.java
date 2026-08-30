@@ -17,8 +17,9 @@ class Solution {
     public long isPossible(int speed,int[] arr){
         long hours =0;
         for(int ele:arr){
-            if(ele%speed == 0) hours+=ele/speed;
-            else hours+=(ele/speed+1);
+            hours+=(long)(Math.ceil((double)ele/speed));
+            // if(ele%speed == 0) hours+=ele/speed;
+            // else hours+=(ele/speed+1);
 
         }
     return hours;
