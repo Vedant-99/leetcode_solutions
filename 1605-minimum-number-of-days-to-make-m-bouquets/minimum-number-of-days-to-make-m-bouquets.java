@@ -30,10 +30,9 @@ class Solution {
                 noBouqet++;
                 flowers=0;
                 }
-        if(noBouqet>=m) return true;
         }
 
-        return false;
+        return (noBouqet>=m);
         }
 
 
